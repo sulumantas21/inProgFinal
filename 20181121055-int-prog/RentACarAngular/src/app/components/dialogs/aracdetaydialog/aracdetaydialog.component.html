@@ -1,0 +1,53 @@
+<mat-toolbar color="primary">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline" style="margin-left: 20px; max-width: 200px;">
+      <mat-label>Araç Alım Yılı</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="Alım Yılı" formControlName="AracAlimYili" name="AracAlimYili" required type="datetime">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Kasa Tipi</mat-label>
+    <input matInput placeholder="Kasa Tipi" formControlName="AracKasaTipi" name="AracKasaTipi" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Km</mat-label>
+    <input matInput placeholder="Km" formControlName="AracKm" name="AracKm" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Koltuk Sayısı</mat-label>
+    <input matInput placeholder="Koltuk Sayısı" formControlName="AracKoltukSayisi" name="AracKoltukSayisi" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Motor Gücü</mat-label>
+    <input matInput placeholder="Motor Gücü" formControlName="AracMotorGucu" name="AracMotorGucu" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Motor Hacmi</mat-label>
+    <input matInput placeholder="Motor Hacmi" formControlName="AracMotorHacmi" name="AracMotorHacmi" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Renk</mat-label>
+    <input matInput placeholder="Renk" formControlName="AracRenk" name="AracRenk" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Türü</mat-label>
+    <input matInput placeholder="Türü" formControlName="AracTuru" name="AracTuru" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Vites Tipi</mat-label>
+    <input matInput placeholder="Vites Tipi" formControlName="AracVitesTipi" name="AracVitesTipi" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Yakit Tipi</mat-label>
+    <input matInput placeholder="Yakıt" formControlName="AracYakitTipi" name="AracYakitTipi" required type="text">
+  </mat-form-field>
+
+</form>
+<button style="margin-left: 20px;" mat-raised-button color="primary" [disabled]="frm.invalid" (click)="dialogRef.close(frm.value)">Kaydet</button>&nbsp;
+<button style="margin-left: 20px;" mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button>
+</div>

@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Ad Soyad</mat-label>
+    <input matInput placeholder="Ad Soyad" formControlName="AdSoyad" name="AdSoyad" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Kullanıcı Adi</mat-label>
+    <input matInput placeholder="KullaniciAdi" formControlName="KullaniciAdi" name="KullaniciAdi" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Email" formControlName="Email" name="Email" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Sifre</mat-label>
+    <input matInput placeholder="Sifre" formControlName="Sifre" name="Sifre" required type="password">
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Telefon</mat-label>
+    <input matInput placeholder="Telefon" formControlName="MusteriTel" name="MusteriTel" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Kimlik No</mat-label>
+    <input matInput  placeholder="Tc" formControlName="MusteriTc" name="MusteriTc" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Adres İlk Satır</mat-label>
+    <textarea matInput placeholder="Adres İlk Satır" formControlName="MusteriAdresIlk" name="MusteriAdresIlk" required type="text"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Adres İkinci Satır</mat-label>
+    <textarea matInput placeholder="Adres İkinci Satır" formControlName="MusteriAdresIkinci" name="MusteriAdresIkinci" required type="text"></textarea>
+  </mat-form-field>
+</form>
+<button style="margin-left: 20px;" mat-raised-button color="primary" [disabled]="frm.invalid" (click)="dialogRef.close(frm.value)">Kaydet</button>&nbsp;
+<button style="margin-left: 20px;" mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button>
+</div>

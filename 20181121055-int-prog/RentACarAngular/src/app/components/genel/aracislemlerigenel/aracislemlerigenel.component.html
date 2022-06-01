@@ -1,0 +1,87 @@
+<div class="containers">
+  <h1 style="margin-top: 30px; margin-left: 30px;">Araçlar</h1>
+  
+  <p>&nbsp;</p>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <input matInput placeholder="Aranacak Aracj Giriniz" >
+  </mat-form-field>
+  
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort >
+    
+    <ng-container matColumnDef="AracFoto" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Fotoğraf
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"><img src="{{kayit.FotoBilgi.FotoBase64}}" alt="Fotoğraf" style="max-width: 100px; max-height: 100px;"> </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracMarka" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Marka
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracMarka}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracModel" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Model
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracModel}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracUretimTarihi" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Üretim Tarihi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracUretimTarihi | date : 'yyyy'}}  </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracGunlukFiyat" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Günlük Fiyat
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracGunlukFiyat}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracKasaTipi" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Kasa Tipi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracDetayBilgi.AracKasaTipi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracKm" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Km
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracDetayBilgi.AracKm}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracMotorGucu" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Motor Gücü
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracDetayBilgi.AracMotorGucu}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracMotorHacmi" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Motor Hacmi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracDetayBilgi.AracMotorHacmi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracRenk" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Renk
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracDetayBilgi.AracRenk}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracVitesTipi" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Vites
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracDetayBilgi.AracVitesTipi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracYakitTipi" style="max-height: 20px;" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Yakıt
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracDetayBilgi.AracYakitTipi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="islemler" class="mr-5">
+      <mat-header-cell *matHeaderCellDef> İşlemler
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> 
+        <mat-label *ngIf="!apiServis.oturumKontrol()" >Rezervasyon İçin Oturum Açın</mat-label>
+        <button mat-icon-button>
+          <mat-icon aria-label="label" color="primary" matTooltip="Rezervasyon Yaptır" (click)="RezOlustur()"   (click)="SetAracIdInLocalStrorage(kayit)" *ngIf="apiServis.oturumKontrol()" >attach_money</mat-icon>
+        </button>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator 
+    [pageSizeOptions]="[10, 25, 100]">
+  </mat-paginator>
+</div>

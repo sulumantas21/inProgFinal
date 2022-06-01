@@ -1,0 +1,67 @@
+<div class="containers">
+  <h1 style="margin-top: 30px; margin-left: 30px;">Araçlar</h1>
+  <button mat-fab color="primary" style="margin-left: 10px;">
+    <mat-icon aria-label="label" matTooltip="Araç Ekle"  (click)="AracEklee()">add</mat-icon>
+  </button>
+  
+  <p>&nbsp;</p>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <input matInput placeholder="Aranacak Aracj Giriniz" >
+  </mat-form-field>
+  
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort >
+    
+   
+    <ng-container matColumnDef="AracMarka" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Marka
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracMarka}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracModel" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Model
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracModel}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracPlaka" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Plaka
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracPlaka}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracUretimTarihi" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Üretim Tarihi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracUretimTarihi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracGunlukFiyat" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Günlük Kullanıcı
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AracGunlukFiyat}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef> İşlemler
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> 
+        <button mat-icon-button>
+          <mat-icon aria-label="label" color="primary" matTooltip="Araç Düzenle" (click)="AracGuncelle(kayit)" >edit</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="label" color="primary" matTooltip="Araç Detay Ekle" (click)="SetAracIdInLocalStrorage(kayit)" (click)="AracDetayEkle()" >add</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="label" color="warn" matTooltip="Araç Sil" (click)="SetAracIdInLocalStrorage(kayit)"(click)="AracSil(kayit)">delete</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="label" color="warn" matTooltip="Araç Pasife Al" (click)="SetAracIdInLocalStrorage(kayit)" (click)="AracPasifAl(kayit)">update</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="label" color="accent" matTooltip="Foto Ekle" (click)="SetAracIdInLocalStrorage(kayit)" (click)="AracFotoEkle()">upload</mat-icon>
+        </button>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator 
+    [pageSizeOptions]="[10, 25, 100]">
+  </mat-paginator>
+</div>

@@ -1,0 +1,85 @@
+<div class="containers">
+  <h1 style="margin-top: 30px; margin-left: 30px;">Üyeler</h1>
+  <button mat-fab color="primary" style="margin-left: 10px;">
+    <mat-icon aria-label="label" matTooltip="Üye Ekle"  (click)="UyeEkle()">add</mat-icon>
+  </button>
+  <p>&nbsp;</p>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <input matInput placeholder="Aranacak kullanıcıyı Giriniz" >
+  </mat-form-field>
+  
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort >
+    
+   
+    <ng-container matColumnDef="KullaniciAdi" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Kullanici Adi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.KullaniciAdi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AdSoyad" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ad Soyad
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.AdSoyad}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Email" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Email
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.Email}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Sifre" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Sifre
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.Sifre}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="UyeAdmin" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Admin
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.UyeAdmin}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="MusteriTc" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> TC
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.MusteriTc}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="MusteriTel" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Tel
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.MusteriTel}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="MusteriAdres1" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Adres 1
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.MusteriAdresIlk}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="MusteriAdres2" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Adres 2
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.MusteriAdresIkinci}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="MusteriRezSay" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Rezervasyon Sayısı
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.MusteriRezSay}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef> İşlemler
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> 
+        <button mat-icon-button>
+          <mat-icon aria-label="label" color="primary" matTooltip="Üye Düzenle" (click)="SetUyeIdInLocalStrorage(kayit)" (click)="UyeGuncelle(kayit)" >edit</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="label" color="primary" matTooltip="Üye Admin Yap" (click)="SetUyeIdInLocalStrorage(kayit)" (click)="UyeAdminYap(kayit)" >add</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="label" color="warn" matTooltip="Üye Sil" (click)="SetUyeIdInLocalStrorage(kayit)"(click)="UyeSil(kayit)">delete</mat-icon>
+        </button>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator 
+    [pageSizeOptions]="[10, 25, 100]">
+  </mat-paginator>
+</div>

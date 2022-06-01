@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f77523e4e3964d56835b96a73c29974d" Name="Diagram1">
+        <EntityTypeShape EntityType="RentACarDatabaseModel.AracDetay" Width="1.5" PointX="5.375" PointY="8" />
+        <EntityTypeShape EntityType="RentACarDatabaseModel.AracFotograf" Width="1.5" PointX="6" PointY="4.125" />
+        <EntityTypeShape EntityType="RentACarDatabaseModel.Araclar" Width="1.5" PointX="3.375" PointY="6.125" />
+        <EntityTypeShape EntityType="RentACarDatabaseModel.Musteri" Width="1.5" PointX="9.75" PointY="5.75" />
+        <EntityTypeShape EntityType="RentACarDatabaseModel.Rezervasyon" Width="1.5" PointX="7.75" PointY="6.25" />
+        <AssociationConnector Association="RentACarDatabaseModel.FK_Araclar_ToAracDetay" />
+        <AssociationConnector Association="RentACarDatabaseModel.FK_AracFotograf_ToAraclar" />
+        <AssociationConnector Association="RentACarDatabaseModel.FK_Rezervasyon_ToAraclar" />
+        <AssociationConnector Association="RentACarDatabaseModel.FK_Rezervasyon_ToMusteri" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

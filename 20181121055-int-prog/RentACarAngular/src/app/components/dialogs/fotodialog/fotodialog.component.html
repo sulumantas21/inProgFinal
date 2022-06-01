@@ -1,0 +1,12 @@
+
+
+<mat-toolbar color="primary">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+<label for="file">Fotoğraf Seçiniz
+  <img [src]="imageUrl" alt="Image Review">
+</label>
+    <input type="file" id="file" accept="image/*" hidden (change)="onSelectNewFile($event.target?.files)">
+    <br>
+<button style="margin-left: 20px;" mat-raised-button color="primary" [disabled]="frm.invalid" (click)="AracFotoEkle()">Kaydet</button>&nbsp;
+<button style="margin-left: 20px;" mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button>

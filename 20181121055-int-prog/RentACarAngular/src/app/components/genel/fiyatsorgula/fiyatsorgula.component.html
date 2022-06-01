@@ -1,0 +1,27 @@
+<div class="container" >
+  <h1 style="margin-top: 50px; margin-left: 100px;">Fiyat Sorgulama</h1>
+  <mat-form-field style="margin-left: 300px; min-width: 500px; margin-top: 100px;">
+    <mat-label>Başlangıç Tarihi</mat-label>
+    <input matInput [matDatepicker]="picker" placeholder="Baslangıc Tarihi"(dateChange)="BasSec($event.value)" required type="datetime">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <mat-form-field style="margin-left: 300px;min-width: 500px;">
+    <mat-label>Bitiş Tarihi</mat-label>
+    <input matInput [matDatepicker]="picker1" placeholder="Bitiş Tarihi" (dateChange)="BitSec($event.value)"  required type="datetime">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <mat-form-field style="margin-left: 300px;min-width: 500px;">
+    <mat-select  placeholder="Araç" (selectionChange)="AracSec($event.value)">
+    <mat-option [value]="araclar.AracPlaka" *ngFor="let araclar of araclar"> {{araclar.AracPlaka}}</mat-option>
+    </mat-select> 
+  </mat-form-field>
+  <br>
+
+<button style="margin-left: 300px;" mat-raised-button color="primary"  (click)="FiyatSorgu()">Sorgula</button>&nbsp;
+</div>

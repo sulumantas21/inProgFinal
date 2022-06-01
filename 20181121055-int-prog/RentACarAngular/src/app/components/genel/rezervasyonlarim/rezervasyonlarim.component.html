@@ -1,0 +1,78 @@
+<div class="containers">
+  <h1 style="margin-top: 30px; margin-left: 30px;">Rezervasyonlarım</h1>
+ 
+  <p>&nbsp;</p>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <input matInput placeholder="Aranacak Rezervasyon Giriniz"  (keyup)="RezFiltrele($event)">
+  </mat-form-field>
+  
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort >
+    
+   
+    <ng-container matColumnDef="AracPlaka" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Plaka
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.aracBilgi.AracPlaka}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracMarka" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Marka
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.aracBilgi.AracMarka}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracModel" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Model
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.aracBilgi.AracModel}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="AracGunlukFiyat" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Gunluk Fiyat
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.aracBilgi.AracGunlukFiyat}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="RezBaslangic" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Baslangic
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.RezBaslangic | date:'shortDate'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="RezBitis" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Bitis
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.RezBitis | date:'shortDate' }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="RezGunSayisi" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Gun Sayisi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.RezGunSayisi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="RezTutar" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Tutar
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.RezTutar}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="MusteriAd" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ad
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.musteriBilgi.AdSoyad}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="MusteriTc" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Tc
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.musteriBilgi.MusteriTc}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="MusteriTel" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Tel
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.musteriBilgi.MusteriTel}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="MusteriEmail" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Email
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.musteriBilgi.Email}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator 
+    [pageSizeOptions]="[10, 25, 100]">
+  </mat-paginator>
+</div>

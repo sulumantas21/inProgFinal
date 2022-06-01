@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RentACarDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AracDetay">
+    <Key>
+      <PropertyRef Name="AracDetayAracId" />
+    </Key>
+    <Property Name="AracDetayAracId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AracKm" Type="int" Nullable="false" />
+    <Property Name="AracAlimYili" Type="datetime" Nullable="false" />
+    <Property Name="AracKoltukSayisi" Type="int" Nullable="false" />
+    <Property Name="AracYakitTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AracVitesTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AracRenk" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AracMotorGucu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AracMotorHacmi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AracKasaTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AracTuru" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AracFotograf">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FotoBase64" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FotoAracId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Araclar">
+    <Key>
+      <PropertyRef Name="AracId" />
+    </Key>
+    <Property Name="AracId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AracPlaka" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AracMarka" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AracModel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AracUretimTarihi" Type="datetime" Nullable="false" />
+    <Property Name="AracGunlukFiyat" Type="money" Nullable="false" />
+    <Property Name="AracKullanilabilir" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Musteri">
+    <Key>
+      <PropertyRef Name="uyeId" />
+    </Key>
+    <Property Name="uyeId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UyeAdmin" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MusteriAdresIlk" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="MusteriAdresIkinci" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="MusteriRezSay" Type="int" Nullable="false" />
+    <Property Name="MusteriTc" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="MusteriTel" Type="nvarchar" MaxLength="11" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rezervasyon">
+    <Key>
+      <PropertyRef Name="RezId" />
+    </Key>
+    <Property Name="RezId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RezTarih" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="RezBaslangic" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="RezBitis" Type="datetime" Nullable="false" />
+    <Property Name="RezAracId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RezMusteriId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RezIslemYapan" Type="int" />
+    <Property Name="RezGunSayisi" Type="int" Nullable="false" />
+    <Property Name="RezTutar" Type="money" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AracFotograf_ToAraclar">
+    <End Role="Araclar" Type="Self.Araclar" Multiplicity="1" />
+    <End Role="AracFotograf" Type="Self.AracFotograf" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Araclar">
+        <PropertyRef Name="AracId" />
+      </Principal>
+      <Dependent Role="AracFotograf">
+        <PropertyRef Name="FotoAracId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Araclar_ToAracDetay">
+    <End Role="Araclar" Type="Self.Araclar" Multiplicity="1" />
+    <End Role="AracDetay" Type="Self.AracDetay" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Araclar">
+        <PropertyRef Name="AracId" />
+      </Principal>
+      <Dependent Role="AracDetay">
+        <PropertyRef Name="AracDetayAracId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rezervasyon_ToAraclar">
+    <End Role="Araclar" Type="Self.Araclar" Multiplicity="1" />
+    <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Araclar">
+        <PropertyRef Name="AracId" />
+      </Principal>
+      <Dependent Role="Rezervasyon">
+        <PropertyRef Name="RezAracId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rezervasyon_ToMusteri">
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
+    <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteri">
+        <PropertyRef Name="uyeId" />
+      </Principal>
+      <Dependent Role="Rezervasyon">
+        <PropertyRef Name="RezMusteriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RentACarDatabaseModelStoreContainer">
+    <EntitySet Name="AracDetay" EntityType="Self.AracDetay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AracFotograf" EntityType="Self.AracFotograf" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Araclar" EntityType="Self.Araclar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rezervasyon" EntityType="Self.Rezervasyon" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AracFotograf_ToAraclar" Association="Self.FK_AracFotograf_ToAraclar">
+      <End Role="Araclar" EntitySet="Araclar" />
+      <End Role="AracFotograf" EntitySet="AracFotograf" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Araclar_ToAracDetay" Association="Self.FK_Araclar_ToAracDetay">
+      <End Role="Araclar" EntitySet="Araclar" />
+      <End Role="AracDetay" EntitySet="AracDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rezervasyon_ToAraclar" Association="Self.FK_Rezervasyon_ToAraclar">
+      <End Role="Araclar" EntitySet="Araclar" />
+      <End Role="Rezervasyon" EntitySet="Rezervasyon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rezervasyon_ToMusteri" Association="Self.FK_Rezervasyon_ToMusteri">
+      <End Role="Musteri" EntitySet="Musteri" />
+      <End Role="Rezervasyon" EntitySet="Rezervasyon" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

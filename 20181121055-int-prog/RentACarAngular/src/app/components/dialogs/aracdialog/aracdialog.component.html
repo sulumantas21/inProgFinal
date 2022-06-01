@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Marka</mat-label>
+    <input matInput placeholder="Marka" formControlName="AracMarka" name="AracMarka" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>AracModel</mat-label>
+    <input matInput placeholder="AracModel" formControlName="AracModel" name="AracModel" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>AracPlaka</mat-label>
+    <input matInput placeholder="AracPlaka" formControlName="AracPlaka" name="AracPlaka" required type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px; max-width: 200px;">
+    <mat-label>AracUretimTarihi</mat-label>
+    <input matInput [matDatepicker]="picker" placeholder="AracUretimTarihi" formControlName="AracUretimTarihi" name="AracUretimTarihi" required type="datetime">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>AracGunlukFiyat</mat-label>
+    <input matInput placeholder="AracGunlukFiyat" formControlName="AracGunlukFiyat" name="AracGunlukFiyat" required type="text">
+  </mat-form-field>
+  
+</form>
+<button style="margin-left: 20px;" mat-raised-button color="primary" [disabled]="frm.invalid" (click)="dialogRef.close(frm.value)">Kaydet</button>&nbsp;
+<button style="margin-left: 20px;" mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button>
+</div>

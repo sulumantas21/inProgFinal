@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <span>REZERVASYON EKRANI</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Başlangıç Tarihi</mat-label>
+    <input matInput [matDatepicker]="picker" placeholder="Baslangıc Tarihi" formControlName="RezBaslangic" name="RezBaslangic" required type="datetime" #bas>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Bitiş Tarihi</mat-label>
+    <input matInput [matDatepicker]="picker1" placeholder="Bitiş Tarihi" formControlName="RezBitis" name="RezBitis" required type="datetime" #bit>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+</form>
+<button style="margin-left: 20px;" mat-raised-button color="primary" (click)="Kaydet(bas.value,bit.value)">Kaydet</button>&nbsp;
+<button style="margin-left: 20px;" mat-raised-button color="warn" >İptal</button>
+</div>

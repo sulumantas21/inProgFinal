@@ -1,0 +1,55 @@
+<div class="container">
+  <h2>Oturum Aç</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Kullanıcı Adı</mat-label>
+    <input matInput placeholder="Kullanıcı Adı" type="text" #KullaniciAdi>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Şifre</mat-label>
+    <input matInput placeholder="Şifre" type="password" #parola>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Ad Soyad</mat-label>
+    <input matInput placeholder="Kullanıcı Adı" type="text" #AdSoyad>
+  </mat-form-field>
+
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Kullanıcı Adı" type="text" #Email>
+  </mat-form-field>
+
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Kimlik Numarasi</mat-label>
+    <input matInput placeholder="Kullanıcı Adı" type="text" #Tc>
+  </mat-form-field>
+
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Telefon</mat-label>
+    <input matInput placeholder="Kullanıcı Adı" type="text" #Telefon>
+  </mat-form-field>
+
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Adres İlk Satır</mat-label>
+    <input matInput placeholder="Kullanıcı Adı" type="text" #adresilk>
+  </mat-form-field>
+
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Adres İkinci Satır</mat-label>
+    <input matInput placeholder="Kullanıcı Adı" type="text" #adresikinci>
+  </mat-form-field>
+  
+
+  <button mat-raised-button color="primary" (click)="KayitOl(KullaniciAdi.value ,parola.value,AdSoyad.value,Email.value,Tc.value,Telefon.value,adresilk.value,adresikinci.value)">Oturum Aç</button>
+</div>
+
+
+
+

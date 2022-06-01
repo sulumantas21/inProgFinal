@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Başlangıç Tarihi</mat-label>
+    <input matInput [matDatepicker]="picker" placeholder="Baslangıc Tarihi" formControlName="RezBaslangic" name="RezBaslangic" required type="datetime">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-label>Bitiş Tarihi</mat-label>
+    <input matInput [matDatepicker]="picker1" placeholder="Bitiş Tarihi" formControlName="RezBitis" name="RezBitis" required type="datetime">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-select  placeholder="Araç" formControlName="RezAracId" name="RezAracId" (selectionChange)="AracSec($event.value)">
+    <mat-option [value]="araclar.AracId" *ngFor="let araclar of araclar"> {{araclar.AracPlaka}}</mat-option>
+  </mat-select> 
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="margin-left: 20px;">
+    <mat-select  placeholder="Müşteri" formControlName="RezMusteriId" name="RezMusteriId" (selectionChange)="MusSec($event.value)">
+    <mat-option [value]="musteriler.uyeId" *ngFor="let musteriler of musteriler"> {{musteriler.AdSoyad}} {{musteriler.MusteriTc}}</mat-option>
+  </mat-select> 
+  </mat-form-field>
+</form>
+<button style="margin-left: 20px;" mat-raised-button color="primary" [disabled]="frm.invalid" (click)="dialogRef.close(frm.value)">Kaydet</button>&nbsp;
+<button style="margin-left: 20px;" mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button>
+</div>
